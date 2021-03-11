@@ -1,17 +1,23 @@
 <template>
   <nav>
     <ul class="container">
-      <li class="nav-item">
-        <i class="fas fa-book"></i>
-        <p class="revision">Revision</p>
+      <li class="nav-item selected">
+        <router-link to="/revision">
+          <i class="fas fa-book"></i>
+          <p class="revision">Revision</p>
+        </router-link>
       </li>
       <li class="nav-item">
-        <i class="fas fa-home"></i>
-        <p class="revision">Home</p>
+        <router-link to="/">
+          <i class="fas fa-home"></i>
+          <p class="home">Home</p>
+        </router-link>
       </li>
       <li class="nav-item">
-        <i class="fas fa-plus"></i>
-        <p class="revision">New Term</p>
+        <router-link to="/newterm">
+          <i class="fas fa-plus"></i>
+          <p class="newterm">New Term</p>
+        </router-link>
       </li>
     </ul>
   </nav>
@@ -48,6 +54,9 @@ nav {
     font-weight: 500;
     color: #4a4a4a;
     margin-top: 0.25rem;
+  }
+  & .selected {
+    color: linear-gradient(322.56deg, #3461ff 0%, #34b6ff 89.84%);
   }
 }
 </style>
