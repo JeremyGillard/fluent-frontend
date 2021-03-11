@@ -12,7 +12,9 @@
         :masteredLength="masteredLength"
       />
     </div>
-    <button>Let's practice!</button>
+    <router-link to="/revision">
+      <div class="button">Let's practice!</div>
+    </router-link>
   </main>
 </template>
 
@@ -70,7 +72,7 @@ header {
     font-size: 1.5rem;
   }
 }
-button {
+.button {
   font-size: 1.625rem;
   color: white;
   padding: 0.26em 3.4em;
