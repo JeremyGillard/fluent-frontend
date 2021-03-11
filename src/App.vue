@@ -54,18 +54,18 @@ export default {
       return this.terms.filter((term) => !!term.numberCorrectAnswer);
     },
     currentTerm() {
-      if (this.learning) {
+      if (this.learning.length) {
         return this.learning[0];
-      } else if (this.reviewing) {
+      } else if (this.reviewing.length) {
         return this.reviewing[0];
       } else {
         return this.mastered[0];
       }
     },
     flashCardColor() {
-      if (this.learning) {
+      if (this.learning.length) {
         return '#34B6FF';
-      } else if (this.reviewing) {
+      } else if (this.reviewing.length) {
         return '#ffc634';
       } else {
         return '#4A4A4A';
@@ -77,10 +77,14 @@ export default {
       if (
         this.inputValue.trim().toLowerCase() === this.currentTerm.translation
       ) {
-        console.log('Youhou!');
+        this.currentTerm.numberCorrectAnswer += 1;
       } else {
-        console.log('Hoooooooow...');
+        this.currentTerm.numberWrongAnswer += 1;
+        if (!this.learning.length) {
+          this.terms.push(this.terms.shift());
+        }
       }
+      this.currentTerm.reviewed = true;
       this.inputValue = '';
     },
   },
@@ -97,7 +101,6 @@ textarea {
   margin: 0 auto;
   font-size: 1.375rem;
   height: 1.375rem;
-  color: '#4a4a4a';
   text-align: center;
 
   &:focus {
