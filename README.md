@@ -1,24 +1,52 @@
-# reviewer
+# Reviewer
 
-## Project setup
-```
-yarn install
-```
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+## Table of content
 
-### Compiles and minifies for production
-```
-yarn build
-```
+**_[Description](#description)_**  
+**_[Project Structure](#project-structure)_**  
+**_[Technologies](#technologies)_**  
+**_[Setup](#setup)_**
 
-### Lints and fixes files
-```
-yarn lint
-```
+## Description
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+This application allows you to write down and review all the words of a foreign language you encounter on a daily basis.
+
+It is mainly composed of 3 tabs.
+
+The **Home screen** showing you the words of the day to review.
+
+<img src="./.github/media/img/Home.png">
+
+The **Revision screen** allowing you to review your words.
+
+<img src="./.github/media/img/Revision.png">
+
+The **New Term screen** allowing you to add new words, new sentences.
+
+<img src="./.github/media/img/NewTerm.png">
+
+_Thoses first previews has been made by me with Figma tool._
+
+## Project Structure
+
+Comming soon
+
+## Technologies
+
+**Language**
+
+- JavaScript
+- Html
+- CSS
+
+**Framework**
+
+- Vue.js
+- Sass
+
+## Setup
+
+1. yarn install
+2. yarn serve
