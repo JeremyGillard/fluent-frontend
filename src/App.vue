@@ -10,6 +10,8 @@
       :translation="currentTerm.translation"
       :reviewed="currentTerm.reviewed"
       :color="flashCardColor"
+      :toggle="toggle"
+      :handleToggle="handleToggle"
     />
     <textarea
       type="text"
@@ -17,6 +19,7 @@
       oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
       @keydown.enter.exact.prevent
       @keyup.enter.exact="handleInput"
+      :disabled="inputDisabled"
     />
   </main>
 </template>
@@ -36,6 +39,8 @@ export default {
     return {
       terms: [],
       inputValue: '',
+      inputDisabled: false,
+      toggle: false,
     };
   },
   created() {
@@ -73,6 +78,21 @@ export default {
     },
   },
   methods: {
+    handleToggle() {
+      this.toggle = !this.toggle;
+      if (this.toggle) {
+        this.inputDisabled = true;
+        this.currentTerm.numberWrongAnswer += 1;
+      } else {
+        this.inputDisabled = true;
+        this.currentTerm.numberWrongAnswer += 1;
+        if (!this.learning.length) {
+          this.terms.push(this.terms.shift());
+        }
+        this.currentTerm.reviewed = true;
+        this.inputValue = '';
+      }
+    },
     handleInput() {
       if (
         this.inputValue.trim().toLowerCase() === this.currentTerm.translation

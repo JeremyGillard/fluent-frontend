@@ -11,26 +11,15 @@
 <script>
 export default {
   props: {
-    term: {
-      type: String,
-      required: true,
-    },
-    translation: {
-      type: String,
-      required: true,
-    },
-    reviewed: {
-      type: Boolean,
-      required: true,
-    },
-    color: {
-      type: String,
-      required: true,
-    },
+    term: String,
+    translation: String,
+    reviewed: Boolean,
+    color: String,
+    toggle: Boolean,
+    handleToggle: Function,
   },
   data() {
     return {
-      toggle: false,
       className: '',
     };
   },
@@ -40,11 +29,6 @@ export default {
     },
     toggledClassName() {
       return this.toggle ? 'fas fa-eye-slash' : 'fas fa-eye';
-    },
-  },
-  methods: {
-    handleToggle() {
-      this.toggle = !this.toggle;
     },
   },
 };
