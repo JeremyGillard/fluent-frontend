@@ -1,11 +1,102 @@
 <template>
   <main class="new-term">
-    <h1>NEW TERM</h1>
+    <form @submit.prevent="handleSubmit">
+      <label for="term">Term</label>
+      <textarea
+        type="text"
+        v-model="termValue"
+        oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+        @keydown.enter.exact.prevent
+      />
+      <label for="term">Translation</label>
+      <textarea
+        type="text"
+        v-model="translationValue"
+        oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+        @keydown.enter.exact.prevent
+      />
+      <button>Add Term</button>
+    </form>
   </main>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      terms: [],
+      termValue: '',
+      translationValue: '',
+    };
+  },
+  methods: {
+    handleSubmit() {
+      this.terms.push({
+        id: Math.floor(Math.random() * 100000),
+        term: this.termValue,
+        translation: this.translationValue,
+        reviewed: false,
+        numberCorrectAnswer: 0,
+        numberWrongAnswer: 0,
+      });
+      this.termValue = '';
+      this.translationValue = '';
+      console.log(this.terms);
+    },
+  },
+};
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.new-term {
+  & form {
+    height: 83vh;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1rem;
+    align-items: center;
+  }
+}
+label {
+  display: block;
+  font-size: 1.375rem;
+  font-weight: 500;
+  margin-top: 2rem;
+}
+textarea {
+  font-family: 'Roboto', sans-serif;
+  resize: none;
+  border: none;
+  border-bottom: 1px solid #a5a5a5;
+  display: block;
+  width: 16.8rem;
+  margin: 0 auto;
+  font-size: 1.375rem;
+  color: #4a4a4a;
+  height: 1.375rem;
+  text-align: center;
+  overflow: hidden;
+  &:focus {
+    outline: none;
+  }
+}
+button {
+  font-size: 1.625rem;
+  color: white;
+  padding: 0.26em 3.4em;
+  margin-top: 2rem;
+  border: none;
+  background: linear-gradient(322.56deg, #3461ff 0%, #34b6ff 89.84%);
+  border-radius: 4px;
+  user-select: none;
+  cursor: pointer;
+  transition: 1s background ease-out;
+  &:active,
+  &:visited {
+    background: #3461ff;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+</style>
