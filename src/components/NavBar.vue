@@ -1,22 +1,22 @@
 <template>
   <nav>
     <ul class="container">
-      <li class="nav-item selected">
+      <li class="nav-item">
         <router-link to="/revision">
-          <i class="fas fa-book"></i>
-          <p class="revision">Revision</p>
+          <i class="fas fa-book" :class="revisionSelectedClass"></i>
+          <p class="revision" :class="revisionSelectedClass">Revision</p>
         </router-link>
       </li>
       <li class="nav-item">
         <router-link to="/">
-          <i class="fas fa-home"></i>
-          <p class="home">Home</p>
+          <i class="fas fa-home" :class="homeSelectedClass"></i>
+          <p class="home" :class="homeSelectedClass">Home</p>
         </router-link>
       </li>
       <li class="nav-item">
         <router-link to="/newterm">
-          <i class="fas fa-plus"></i>
-          <p class="newterm">New Term</p>
+          <i class="fas fa-plus" :class="newtermSelectedClass"></i>
+          <p class="newterm" :class="newtermSelectedClass">New Term</p>
         </router-link>
       </li>
     </ul>
@@ -24,7 +24,22 @@
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    currentRoute() {
+      return this.$route.name;
+    },
+    revisionSelectedClass() {
+      return this.currentRoute === 'revision' ? 'selected' : '';
+    },
+    homeSelectedClass() {
+      return this.currentRoute === 'home' ? 'selected' : '';
+    },
+    newtermSelectedClass() {
+      return this.currentRoute === 'newterm' ? 'selected' : '';
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -45,18 +60,18 @@ nav {
 }
 .nav-item {
   text-align: center;
-  & i {
-    font-size: 1.4rem;
-    color: #4a4a4a;
-  }
-  & p {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: #4a4a4a;
-    margin-top: 0.25rem;
-  }
-  & .selected {
-    color: linear-gradient(322.56deg, #3461ff 0%, #34b6ff 89.84%);
-  }
+}
+i {
+  font-size: 1.4rem;
+  color: #4a4a4a;
+}
+p {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-top: 0.25rem;
+  color: #4a4a4a;
+}
+.selected {
+  color: #3461ff;
 }
 </style>

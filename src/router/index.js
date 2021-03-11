@@ -6,17 +6,17 @@ import Revision from '../views/Revision.vue';
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'home',
     component: Home,
   },
   {
     path: '/newterm',
-    name: 'New Term',
+    name: 'newterm',
     component: NewTerm,
   },
   {
     path: '/revision',
-    name: 'Revision',
+    name: 'revision',
     component: Revision,
   },
 ];
