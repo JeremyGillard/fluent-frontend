@@ -11,6 +11,13 @@
       :reviewed="currentTerm.reviewed"
       :color="flashCardColor"
     />
+    <textarea
+      type="text"
+      v-model="inputValue"
+      oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+      @keydown.enter.exact.prevent
+      @keyup.enter.exact="handleInput"
+    />
   </main>
 </template>
 
@@ -28,6 +35,7 @@ export default {
   data() {
     return {
       terms: [],
+      inputValue: '',
     };
   },
   created() {
@@ -64,7 +72,36 @@ export default {
       }
     },
   },
+  methods: {
+    handleInput() {
+      if (
+        this.inputValue.trim().toLowerCase() === this.currentTerm.translation
+      ) {
+        console.log('Youhou!');
+      } else {
+        console.log('Hoooooooow...');
+      }
+      this.inputValue = '';
+    },
+  },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+textarea {
+  resize: none;
+  border: none;
+  border-bottom: 1px solid #a5a5a5;
+  display: block;
+  width: 16.8rem;
+  margin: 0 auto;
+  font-size: 1.375rem;
+  height: 1.375rem;
+  color: '#4a4a4a';
+  text-align: center;
+
+  &:focus {
+    outline: none;
+  }
+}
+</style>
