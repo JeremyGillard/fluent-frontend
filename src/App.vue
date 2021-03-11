@@ -1,14 +1,22 @@
 <template>
   <main>
-    <h1>My App!</h1>
+    <list-indicators
+      :learningLength="learning.length"
+      :reviewingLength="reviewing.length"
+      :masteredLength="mastered.length"
+    />
   </main>
 </template>
 
 <script>
+import ListIndicators from './components/ListIndicators.vue';
 import { getTerms } from './services/api';
 
 export default {
   name: 'App',
+  components: {
+    ListIndicators,
+  },
   data() {
     return {
       terms: [],
@@ -33,4 +41,4 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped></style>
