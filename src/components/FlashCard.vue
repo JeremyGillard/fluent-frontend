@@ -44,7 +44,7 @@ export default {
 }
 .content {
   font-size: 1.375rem;
-  color: '#4a4a4a';
+  color: #4a4a4a;
   margin: 0 auto 1.375rem;
   text-align: center;
   user-select: none;
@@ -57,7 +57,7 @@ export default {
 }
 .icon i {
   font-size: 1.5rem;
-  color: '#4a4a4a';
+  color: #4a4a4a;
 }
 .tablet {
   width: 0.875rem;

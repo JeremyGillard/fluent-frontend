@@ -111,11 +111,20 @@ export default {
       this.inputValue = '';
     },
   },
+  watch: {
+    currentTerm: function() {
+      if (this.learning.length === 0 && this.reviewing.length === 0) {
+        this.inputDisabled = true;
+        this.inputValue = 'Congratulation!\nNo more word to review today';
+      }
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 textarea {
+  font-family: 'Roboto', sans-serif;
   resize: none;
   border: none;
   border-bottom: 1px solid #a5a5a5;
