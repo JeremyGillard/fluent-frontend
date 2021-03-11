@@ -131,7 +131,7 @@ textarea {
   font-size: 1.375rem;
   height: 1.375rem;
   text-align: center;
-
+  overflow: hidden;
   &:focus {
     outline: none;
   }
