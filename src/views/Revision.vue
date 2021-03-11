@@ -135,13 +135,13 @@ textarea {
   }
 }
 main {
-  height: 100vh;
+  height: 83vh;
 }
 .container {
   margin-top: 0;
   transition: margin-top 1s ease-out;
 }
 .finished {
-  margin-top: 35%;
+  margin-top: 30%;
 }
 </style>
