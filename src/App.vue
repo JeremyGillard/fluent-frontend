@@ -21,12 +21,14 @@
       @keyup.enter.exact="handleInput"
       :disabled="inputDisabled"
     />
+    <nav-bar />
   </main>
 </template>
 
 <script>
 import ListIndicators from './components/ListIndicators.vue';
 import FlashCard from './components/FlashCard.vue';
+import NavBar from './components/NavBar';
 import { getTerms } from './services/api';
 
 export default {
@@ -34,6 +36,7 @@ export default {
   components: {
     ListIndicators,
     FlashCard,
+    NavBar,
   },
   data() {
     return {
