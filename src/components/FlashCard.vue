@@ -41,6 +41,7 @@ export default {
   border-radius: 0.5rem;
   margin: 1.5rem auto 1rem;
   padding: 1rem;
+  cursor: pointer;
 }
 .content {
   font-size: 1.375rem;

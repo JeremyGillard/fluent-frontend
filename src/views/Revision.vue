@@ -5,22 +5,25 @@
       :reviewingLength="reviewing.length"
       :masteredLength="mastered.length"
     />
-    <flash-card
-      :term="currentTerm.term"
-      :translation="currentTerm.translation"
-      :reviewed="currentTerm.reviewed"
-      :color="flashCardColor"
-      :toggle="toggle"
-      :handleToggle="handleToggle"
-    />
-    <textarea
-      type="text"
-      v-model="inputValue"
-      oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
-      @keydown.enter.exact.prevent
-      @keyup.enter.exact="handleInput"
-      :disabled="inputDisabled"
-    />
+    <div class="container" :class="[reviewFinished ? '' : 'finished']">
+      <flash-card
+        :term="currentTerm.term"
+        :translation="currentTerm.translation"
+        :reviewed="currentTerm.reviewed"
+        :color="flashCardColor"
+        :toggle="toggle"
+        :handleToggle="handleToggle"
+      />
+      <textarea
+        v-if="reviewFinished"
+        type="text"
+        v-model="inputValue"
+        oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+        @keydown.enter.exact.prevent
+        @keyup.enter.exact="handleInput"
+        :disabled="inputDisabled"
+      />
+    </div>
   </main>
 </template>
 
@@ -76,6 +79,9 @@ export default {
         return '#4A4A4A';
       }
     },
+    reviewFinished() {
+      return !(this.learning.length === 0 && this.reviewing.length === 0);
+    },
   },
   methods: {
     handleToggle() {
@@ -84,7 +90,7 @@ export default {
         this.inputDisabled = true;
         this.currentTerm.numberWrongAnswer += 1;
       } else {
-        this.inputDisabled = true;
+        this.inputDisabled = false;
         this.currentTerm.numberWrongAnswer += 1;
         if (!this.learning.length) {
           this.terms.push(this.terms.shift());
@@ -108,14 +114,6 @@ export default {
       this.inputValue = '';
     },
   },
-  watch: {
-    currentTerm: function() {
-      if (this.learning.length === 0 && this.reviewing.length === 0) {
-        this.inputDisabled = true;
-        this.inputValue = 'Congratulation!\nNo more word to review today';
-      }
-    },
-  },
 };
 </script>
 
@@ -135,5 +133,15 @@ textarea {
   &:focus {
     outline: none;
   }
+}
+main {
+  height: 100vh;
+}
+.container {
+  margin-top: 0;
+  transition: margin-top 1s ease-out;
+}
+.finished {
+  margin-top: 35%;
 }
 </style>
