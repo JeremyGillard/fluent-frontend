@@ -1,0 +1,27 @@
+$white: #fff;
+$black: #000;
+$grey-0: #4a4a4a;
+$grey-1: #a5a5a5;
+$grey-2: #f3f3f3;
+$primary: linear-gradient(322.56deg, #3461ff 0%, #34b6ff 89.84%);
+$blue: #34b6ff;
+$yellow: #ffc634;
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+html {
+  box-sizing: inherit;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.625rem;
+}
