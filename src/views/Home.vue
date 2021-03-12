@@ -49,14 +49,14 @@ export default {
   methods: {
     generateChart() {
       const data = [
-        this.learningLength,
-        this.reviewingLength,
-        this.masteredLength,
+        { name: 'learning', value: this.learningLength },
+        { name: 'reviewing', value: this.reviewingLength },
+        { name: 'mastered', value: this.masteredLength },
       ];
 
       const color = d3
         .scaleOrdinal()
-        .domain(data)
+        .domain(data.map((d) => d.name))
         .range(['#34B6FF', '#ffc634', '#4A4A4A']);
 
       const width = 243;
@@ -71,9 +71,11 @@ export default {
         .append('g')
         .attr('transform', `translate(${width / 2}, ${height / 2})`);
 
-      const pie = d3.pie().value((d) => d);
+      const pie = d3.pie().value((d) => d.value);
 
       const data_ready = pie(data);
+
+      console.log({ data_ready });
 
       g.selectAll('path')
         .data(data_ready)
@@ -85,7 +87,7 @@ export default {
             .innerRadius(100)
             .outerRadius(120),
         )
-        .attr('fill', (d) => color(d.data));
+        .attr('fill', (d) => color(d.data.name));
     },
   },
 };
