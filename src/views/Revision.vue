@@ -7,13 +7,14 @@
     />
     <div class="container" :class="[reviewFinished ? '' : 'finished']">
       <flash-card
+        v-if="currentTerm"
         :term="currentTerm.term"
         :translation="currentTerm.translation"
         :reviewed="currentTerm.reviewed"
         :color="flashCardColor"
         :toggle="toggle"
         :handleToggle="handleToggle"
-      />
+      /><!-- TODO loader -->
       <textarea
         v-if="reviewFinished"
         type="text"
@@ -30,7 +31,6 @@
 <script>
 import ListIndicators from '@/components/ListIndicators.vue';
 import FlashCard from '@/components/FlashCard.vue';
-import { getTerms } from '@/services/api';
 
 export default {
   name: 'App',
@@ -40,26 +40,26 @@ export default {
   },
   data() {
     return {
-      terms: [],
       inputValue: '',
       inputDisabled: false,
       toggle: false,
     };
   },
   created() {
-    this.terms = getTerms();
+    this.$store.dispatch('fetchTerms');
   },
   computed: {
+    terms() {
+      return this.$store.state.terms;
+    },
     learning() {
-      return this.terms.filter((term) => !term.reviewed);
+      return this.$store.getters.learning;
     },
     reviewing() {
-      return this.terms.filter(
-        ({ reviewed, numberCorrectAnswer }) => reviewed && !numberCorrectAnswer,
-      );
+      return this.$store.getters.reviewing;
     },
     mastered() {
-      return this.terms.filter((term) => !!term.numberCorrectAnswer);
+      return this.$store.getters.mastered;
     },
     currentTerm() {
       if (this.learning.length) {
