@@ -1,5 +1,5 @@
 import { createStore } from 'vuex';
-import { getAsyncTerms } from '../services/api';
+import { getTerms } from '../services/api';
 
 export default createStore({
   state: {
@@ -30,7 +30,7 @@ export default createStore({
   },
   actions: {
     async fetchTerms(context) {
-      const terms = await getAsyncTerms();
+      const terms = await getTerms();
       context.commit('setTerms', terms);
     },
   },

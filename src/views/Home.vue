@@ -43,6 +43,9 @@ export default {
   mounted() {
     this.$nextTick(this.generateChart());
   },
+  updated() {
+    this.$nextTick(this.generateChart());
+  },
   methods: {
     generateChart() {
       const data = [

@@ -48,5 +48,6 @@ Comming soon
 
 ## Setup
 
-1. yarn install
-2. yarn serve
+1. git clone https://github.com/JeremyGillard/reviewer.git
+2. yarn install
+3. yarn serve
