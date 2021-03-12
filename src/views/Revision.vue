@@ -45,9 +45,6 @@ export default {
       toggle: false,
     };
   },
-  created() {
-    this.$store.dispatch('fetchTerms');
-  },
   computed: {
     terms() {
       return this.$store.state.terms;

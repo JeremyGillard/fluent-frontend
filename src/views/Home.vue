@@ -26,14 +26,16 @@ export default {
   components: {
     ListIndicators,
   },
-  data() {
-    return {
-      learningLength: 32,
-      reviewingLength: 12,
-      masteredLength: 143,
-    };
-  },
   computed: {
+    learningLength() {
+      return this.$store.getters.learning.length;
+    },
+    reviewingLength() {
+      return this.$store.getters.reviewing.length;
+    },
+    masteredLength() {
+      return this.$store.getters.mastered.length;
+    },
     total() {
       return this.learningLength + this.reviewingLength + this.masteredLength;
     },
