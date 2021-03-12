@@ -36,6 +36,7 @@ export default {
 
 <style lang="scss" scoped>
 .list-indicators {
+  background-color: #f3f3f3;
   margin: 3.5rem auto 0;
   display: flex;
   justify-content: space-evenly;

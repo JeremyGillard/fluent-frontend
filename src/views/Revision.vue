@@ -130,12 +130,18 @@ textarea {
   height: 1.375rem;
   text-align: center;
   overflow: hidden;
+  background-color: #f3f3f3;
   &:focus {
     outline: none;
   }
 }
 main {
-  height: 83vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #f3f3f3;
+  height: 100vh;
 }
 .container {
   margin-top: 0;

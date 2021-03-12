@@ -44,6 +44,7 @@ export default {
 
 <style lang="scss" scoped>
 nav {
+  background-color: #f3f3f3;
   position: fixed;
   bottom: 0;
   left: 0;

@@ -49,8 +49,9 @@ export default {
 
 <style lang="scss" scoped>
 .new-term {
+  background-color: #f3f3f3;
   & form {
-    height: 83vh;
+    height: 100vh;
     display: flex;
     flex-flow: column nowrap;
     gap: 1rem;
@@ -64,6 +65,7 @@ label {
   margin-top: 2rem;
 }
 textarea {
+  background-color: #f3f3f3;
   font-family: 'Roboto', sans-serif;
   resize: none;
   border: none;

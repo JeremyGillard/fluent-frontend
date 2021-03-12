@@ -88,15 +88,15 @@ export default {
 
 <style lang="scss" scoped>
 .home {
-  height: 90vh;
+  background-color: #f3f3f3;
+  height: 100vh;
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 }
 svg {
   position: absolute;
-  z-index: -1;
 }
 header {
   width: 15.2rem;
@@ -117,7 +117,7 @@ header {
   font-size: 1.625rem;
   color: white;
   padding: 0.26em 3.4em;
-  margin-top: 2rem;
+  margin-bottom: 4rem;
   border: none;
   background: linear-gradient(322.56deg, #3461ff 0%, #34b6ff 89.84%);
   border-radius: 4px;
