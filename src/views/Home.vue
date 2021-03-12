@@ -20,7 +20,7 @@
 
 <script>
 import ListIndicators from '@/components/ListIndicators.vue';
-import * as d3 from 'd3';
+import Chart from '../services/chart';
 
 export default {
   components: {
@@ -48,46 +48,11 @@ export default {
   },
   methods: {
     generateChart() {
-      const data = [
-        { name: 'learning', value: this.learningLength },
-        { name: 'reviewing', value: this.reviewingLength },
-        { name: 'mastered', value: this.masteredLength },
-      ];
-
-      const color = d3
-        .scaleOrdinal()
-        .domain(data.map((d) => d.name))
-        .range(['#34B6FF', '#ffc634', '#4A4A4A']);
-
-      const width = 243;
-      const height = width;
-
-      const svg = d3
-        .select('#chart')
-        .attr('width', width)
-        .attr('height', height);
-
-      const g = svg
-        .append('g')
-        .attr('transform', `translate(${width / 2}, ${height / 2})`);
-
-      const pie = d3.pie().value((d) => d.value);
-
-      const data_ready = pie(data);
-
-      console.log({ data_ready });
-
-      g.selectAll('path')
-        .data(data_ready)
-        .join('path')
-        .attr(
-          'd',
-          d3
-            .arc()
-            .innerRadius(100)
-            .outerRadius(120),
-        )
-        .attr('fill', (d) => color(d.data.name));
+      Chart.generate(
+        this.learningLength,
+        this.reviewingLength,
+        this.masteredLength,
+      );
     },
   },
 };
