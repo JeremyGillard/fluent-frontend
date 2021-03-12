@@ -35,13 +35,20 @@ function generate(learningLength, reviewingLength, masteredLength) {
 
   g.selectAll('path')
     .data(data_ready)
-    .join('path')
-    .attr('d', (d) => arc(d))
-    .attr('fill', (d) => color(d.data.name))
+    .enter()
+    .append('path')
     .transition()
-    .duration(1000)
-    .delay((d, i) => i * 250)
-    .attrTween('d');
+    .duration(400)
+    .delay((d, i) => i * 400)
+    .attrTween('d', function(d) {
+      var i = d3.interpolate(d.startAngle + 0.1, d.endAngle);
+      return function(t) {
+        d.endAngle = i(t);
+        return arc(d);
+      };
+    })
+    .attr('fill', (d) => color(d.data.name));
+  // .attr('d', (d) => arc(d))
 }
 
 export default { generate };

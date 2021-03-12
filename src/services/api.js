@@ -57,8 +57,8 @@ const terms = [
   },
   {
     id: 7,
-    term: 'hello everyone',
-    translation: 'bonjour tout le monde',
+    term: 'mandatory',
+    translation: 'obligatoire',
     reviewed: false,
     numberCorrectAnswer: 0,
     numberWrongAnswer: 0,

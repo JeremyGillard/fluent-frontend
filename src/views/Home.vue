@@ -40,12 +40,6 @@ export default {
       return this.learningLength + this.reviewingLength + this.masteredLength;
     },
   },
-  mounted() {
-    this.$nextTick(this.generateChart());
-  },
-  updated() {
-    this.$nextTick(this.generateChart());
-  },
   methods: {
     generateChart() {
       Chart.generate(
@@ -54,6 +48,14 @@ export default {
         this.masteredLength,
       );
     },
+  },
+  watch: {
+    total: function() {
+      this.generateChart();
+    },
+  },
+  mounted() {
+    this.generateChart();
   },
 };
 </script>
