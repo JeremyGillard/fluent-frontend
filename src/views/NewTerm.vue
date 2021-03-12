@@ -21,6 +21,8 @@
 </template>
 
 <script>
+import { v4 as uuidv4 } from 'uuid';
+
 export default {
   data() {
     return {
@@ -32,7 +34,7 @@ export default {
   methods: {
     handleSubmit() {
       this.terms.push({
-        id: Math.floor(Math.random() * 100000),
+        id: uuidv4(),
         term: this.termValue,
         translation: this.translationValue,
         reviewed: false,
