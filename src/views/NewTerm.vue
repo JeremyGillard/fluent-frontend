@@ -26,24 +26,23 @@ import { v4 as uuidv4 } from 'uuid';
 export default {
   data() {
     return {
-      terms: [],
       termValue: '',
       translationValue: '',
     };
   },
   methods: {
     handleSubmit() {
-      this.terms.push({
+      const term = {
         id: uuidv4(),
-        term: this.termValue,
-        translation: this.translationValue,
+        term: this.termValue.trim().toLowerCase(),
+        translation: this.translationValue.trim().toLowerCase(),
         reviewed: false,
         numberCorrectAnswer: 0,
         numberWrongAnswer: 0,
-      });
+      };
+      this.$store.commit('addTerm', term);
       this.termValue = '';
       this.translationValue = '';
-      console.log(this.terms);
     },
   },
 };
