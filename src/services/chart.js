@@ -48,6 +48,27 @@ function generate(learningLength, reviewingLength, masteredLength) {
       };
     })
     .attr('fill', (d) => color(d.data.name));
+
+  // g.selectAll('path')
+  //   .data(data_ready)
+  //   .join(
+  //     (enter) =>
+  //       enter
+  //         .append('path')
+  //         .attr('fill', (d) => color(d.data.name))
+  //         .transition()
+  //         .duration(400)
+  //         .delay((d, i) => i * 400)
+  //         .attrTween('d', function(d) {
+  //           var i = d3.interpolate(d.startAngle + 0.1, d.endAngle);
+  //           return function(t) {
+  //             d.endAngle = i(t);
+  //             return arc(d);
+  //           };
+  //         }),
+  //     (update) => update,
+  //     (exit) => exit.remove(),
+  //   );
   // .attr('d', (d) => arc(d))
 }
 
