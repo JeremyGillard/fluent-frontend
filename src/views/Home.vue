@@ -55,6 +55,7 @@ export default {
     },
   },
   mounted() {
+    this.$store.dispatch('fetchTerms');
     this.generateChart();
   },
 };

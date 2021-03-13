@@ -1,6 +1,6 @@
 import { createStore } from 'vuex';
 import { getTerms } from '../services/api';
-import { auth } from '../services/firebase';
+import { auth, db } from '../services/firebase';
 
 export default createStore({
   state: {
@@ -27,7 +27,7 @@ export default createStore({
       auth
         .signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
-          this.state.user = userCredential;
+          this.state.user = userCredential.user;
           this.state.error = null;
         })
         .catch((error) => (this.state.error = error.message));
@@ -44,6 +44,10 @@ export default createStore({
   actions: {
     async fetchTerms(context) {
       const terms = await getTerms();
+      const i = await db.collection('items').add({ content: "I'm an item!" });
+      console.log(i);
+      const querySnapshot = await db.collection('terms').get();
+      console.log(querySnapshot);
       context.commit('setTerms', terms);
     },
   },
