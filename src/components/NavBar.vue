@@ -55,7 +55,7 @@ nav {
   width: 100%;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   padding: 0.5rem 0;
 }
