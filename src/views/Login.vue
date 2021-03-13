@@ -86,16 +86,17 @@ input {
   border-radius: 0.25rem;
 }
 p {
+  position: absolute;
   color: #b10000;
   font-size: 0.8rem;
   margin-top: 0.2rem;
-  width: 15.85rem;
+  width: 16rem;
 }
 button {
   font-size: 1.625rem;
   color: white;
   padding: 0.26em 4em;
-  margin-top: 1rem;
+  margin-top: 2.4rem;
   margin-bottom: 2rem;
   border: none;
   background: linear-gradient(322.56deg, #3461ff 0%, #34b6ff 89.84%);
