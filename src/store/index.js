@@ -1,10 +1,11 @@
 import { createStore } from 'vuex';
 import { getTerms } from '../services/api';
+import { auth } from '../services/firebase';
 
 export default createStore({
   state: {
     terms: [],
-    use: null,
+    user: null,
   },
   getters: {
     learning(state) {
@@ -20,6 +21,15 @@ export default createStore({
     },
   },
   mutations: {
+    auth(state, user) {
+      const { email, password } = user;
+      auth
+        .signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          this.state.user = userCredential;
+        })
+        .catch((error) => console.log({ error }));
+    },
     setTerms(state, terms) {
       if (!state.terms.length) {
         state.terms = terms;

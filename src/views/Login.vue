@@ -27,7 +27,12 @@ export default {
   },
   methods: {
     login() {
-      this.$store.state.user = this.email;
+      const user = {
+        email: this.email,
+        password: this.password,
+      };
+      this.$store.commit('auth', user);
+      this.password = '';
       this.$router.push('/');
     },
   },
