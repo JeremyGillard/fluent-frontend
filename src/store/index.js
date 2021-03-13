@@ -6,6 +6,7 @@ export default createStore({
   state: {
     terms: [],
     user: null,
+    error: null,
   },
   getters: {
     learning(state) {
@@ -27,8 +28,9 @@ export default createStore({
         .signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
           this.state.user = userCredential;
+          this.state.error = null;
         })
-        .catch((error) => console.log({ error }));
+        .catch((error) => (this.state.error = error.message));
     },
     setTerms(state, terms) {
       if (!state.terms.length) {
