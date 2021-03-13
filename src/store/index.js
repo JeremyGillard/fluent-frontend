@@ -4,6 +4,7 @@ import { getTerms } from '../services/api';
 export default createStore({
   state: {
     terms: [],
+    use: null,
   },
   getters: {
     learning(state) {

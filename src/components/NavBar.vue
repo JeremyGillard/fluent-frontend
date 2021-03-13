@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav :class="[user ? '' : 'hidden']">
     <ul class="container">
       <li class="nav-item">
         <router-link to="/revision">
@@ -38,11 +38,17 @@ export default {
     newtermSelectedClass() {
       return this.currentRoute === 'newterm' ? 'selected' : '';
     },
+    user() {
+      return this.$store.state.user;
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.hidden {
+  display: none;
+}
 nav {
   background-color: #f3f3f3;
   position: fixed;

@@ -1,7 +1,7 @@
 <template>
   <main class="login">
     <img class="icon" src="../assets/reviewer.png" alt="app icon" />
-    <form>
+    <form @submit.prevent="login">
       <label for="email">Email</label>
       <input v-model="email" required type="email" name="email" id="email" />
       <label for="password">Password</label>
@@ -21,20 +21,20 @@
 export default {
   data() {
     return {
-      email: '',
-      password: '',
+      email: null,
+      password: null,
     };
   },
   methods: {
-    handleLogin() {},
+    login() {
+      this.$store.state.user = this.email;
+      this.$router.push('/');
+    },
   },
 };
 </script>
 
-<style lang="scss">
-nav {
-  display: none;
-}
+<style lang="scss" scoped>
 .login {
   height: 100vh;
   display: flex;
@@ -45,6 +45,7 @@ nav {
 }
 .icon {
   width: 40vw;
+  max-width: 15rem;
 }
 label,
 input {
