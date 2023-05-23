@@ -11,6 +11,8 @@
 
 ## Description
 
+This version is an old version with the old name.
+
 This application allows you to write down and review all the words of a foreign language you encounter on a daily basis.
 
 It is mainly composed of 3 tabs.
