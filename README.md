@@ -47,9 +47,3 @@ Comming soon
 
 - Vue.js
 - Sass
-
-## Setup
-
-1. git clone https://github.com/JeremyGillard/reviewer.git
-2. yarn install
-3. yarn serve
